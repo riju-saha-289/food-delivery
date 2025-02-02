@@ -9,7 +9,7 @@ const crypto=require("crypto")
 const placeOrder = async (req, res)=>{
   const {userId,items,amount,address}=req.body;
   
-  const frontend_url="http://localhost:5173"
+  const frontend_url="https://food-delivery-frontend-3zy7.onrender.com/"
   try{
     const newOrder=new orderModel({
       userId,
