@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -20,9 +20,10 @@ import MyOrder from './pages/MyOrders/MyOrder'
 import ContactUs from './pages/Contact/ContactUs'
 import Menu from './pages/Menu/Menu'
 import MobileAppPage from './pages/Mobile-App/MobileAppPage'
-// import Verify from './pages/Verify/Verify'
+import { Context } from './Context/Context'
+
 function App() {
-  
+  const{reRender,SetReRender}=useContext(Context)
 
   return (
     <Router>
