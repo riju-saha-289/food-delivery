@@ -6,7 +6,7 @@ const ContextProvider=(props)=>{
   const[cartItems,setCartItems]=useState({})
   const[token,setToken]=useState("")
   const[food_list,setFood_list]=useState([])
-  const url='http://localhost:4000';
+  const url='https://food-delivery-um0q.onrender.com';
   const[category,setCategory]=useState("All");
 
   // fetch foodlist
