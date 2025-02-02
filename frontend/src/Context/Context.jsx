@@ -8,6 +8,7 @@ const ContextProvider=(props)=>{
   const[food_list,setFood_list]=useState([])
   const url='https://food-delivery-um0q.onrender.com';
   const[category,setCategory]=useState("All");
+  const [activeTab, setActiveTab] = useState("home"); // Set default active tab
 
   // fetch foodlist
   const fetchFoodList=async()=>{
@@ -72,6 +73,7 @@ const ContextProvider=(props)=>{
       }
     }
     reloadData();
+    setActiveTab("home");
   }, [token]);
   
   useEffect(()=>{
@@ -94,7 +96,9 @@ const ContextProvider=(props)=>{
     url,
     token,
     setToken,category,
-    setCategory
+    setCategory,
+    activeTab,
+    setActiveTab
   }
 
   return(
