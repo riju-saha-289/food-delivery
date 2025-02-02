@@ -4,11 +4,11 @@ import LoginPopup from "./LoginPopup";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../Context/Context";
 const Navbar = () => {
-  const [activeTab, setActiveTab] = useState("home"); // Set default active tab
+ 
 
   const [showPopup, setShowPopup] = useState(false);
 
-  const { cartTotal, token, setToken } = useContext(Context);
+  const { cartTotal, token, setToken,activeTab, setActiveTab } = useContext(Context);
   const navigate=useNavigate();
   const handleTabClick = (tabName) => {
     setActiveTab(tabName); // Correctly set the active tab based on the tabName parameter
