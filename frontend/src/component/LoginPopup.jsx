@@ -110,7 +110,7 @@ const LoginPopup = ({ showPopup, setShowPopup }) => {
                   type="email"
                   className="form-control"
                   id="email"
-                  placeholder="Enter your email"
+                  placeholder="Enter your email(must be 8 character)"
                   name="email"
                   value={data.email}
                   onChange={(e)=>onChangeHandler(e)}
