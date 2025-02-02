@@ -53,7 +53,7 @@ const verifyOrder = async (req, res) => {
   if(isAuthentic){
      await orderModel.findByIdAndUpdate(orderId, { payment: true }, { new: true });
      await userModel.findByIdAndUpdate(userId, { cartData: {} });
-     return res.redirect(`http://localhost:5174/paymentSuccess?reference=${razorpay_payment_id}`)
+     return res.redirect(`frontend_url/paymentSuccess?reference=${razorpay_payment_id}`)
   }
   else{
     res.status(404).json({
