@@ -83,9 +83,6 @@ export default function Sidebar() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-grow-1 p-4">
-        <h2>{sidebar || "Welcome to the Admin Panel"}</h2>
-      </div>
-    </div>
+      
   );
 }
