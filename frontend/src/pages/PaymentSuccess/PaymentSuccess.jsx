@@ -24,7 +24,7 @@ export default function PaymentSuccess() {
               <Link to="/" className="btn btn-primary">
                 Go Home
               </Link>
-              <Link to="/myorder" className="btn btn-secondary">
+              <Link to="/myorders" className="btn btn-secondary">
                 My Orders
               </Link>
             </div>
