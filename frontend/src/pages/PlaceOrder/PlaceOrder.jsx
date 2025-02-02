@@ -55,7 +55,7 @@ export default function PlaceOrder() {
       // Razorpay Options
       const options = {
         key,
-        amount: orderData.amount, // Convert amount to paise
+        amount: orderData.amount*100, // Convert amount to paise
         currency: "INR",
         name: "TOMATO",
         description: "Test Transaction",
