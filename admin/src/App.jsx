@@ -10,7 +10,7 @@ import { ToastContainer} from 'react-toastify';
 
 function App() {
   
- const url='http://localhost:4000'
+ const url='https://food-delivery-um0q.onrender.com'
   return (
     <div>
       <Navbar/>
