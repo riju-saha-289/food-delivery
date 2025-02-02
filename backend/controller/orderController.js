@@ -3,9 +3,8 @@ const orderModel = require("../models/orderModel");
 require('dotenv/config')
 const Razorpay = require('razorpay');
 const crypto=require("crypto")
+const frontend_url="https://food-delivery-frontend-3zy7.onrender.com";
 
-//  
-const frontend_url="https://food-delivery-frontend-3zy7.onrender.com/"
 const placeOrder = async (req, res)=>{
   const {userId,items,amount,address}=req.body;
   
@@ -43,33 +42,24 @@ const getKey=async(req,res)=>{
 
 const verifyOrder = async (req, res) => {
   console.log(req.body);
-  const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = req.body;
+  const{razorpay_payment_id,razorpay_order_id,razorpay_signature}=req.body;
   const { orderId, userId } = req.query;
-
-  if (!orderId || !userId) {
-    return res.status(400).json({ success: false, message: "Missing orderId or userId" });
+  
+  const body=razorpay_order_id + "|" +razorpay_payment_id;
+  const expected_signature=crypto.createHmac("sha256",process.env.RAZORPAY_SECRET_KEY).update(body.toString()).digest("hex");
+  
+  const isAuthentic=razorpay_signature === expected_signature;
+  if(isAuthentic){
+     await orderModel.findByIdAndUpdate(orderId, { payment: true }, { new: true });
+     await userModel.findByIdAndUpdate(userId, { cartData: {} });
+     return res.redirect(`${frontend_url}/paymentSuccess?reference=${razorpay_payment_id}`)
   }
-
-  const body = razorpay_order_id + "|" + razorpay_payment_id;
-  const expected_signature = crypto.createHmac("sha256", process.env.RAZORPAY_SECRET_KEY)
-    .update(body.toString())
-    .digest("hex");
-
-  const isAuthentic = razorpay_signature === expected_signature;
-
-  if (isAuthentic) {
-    await orderModel.findByIdAndUpdate(orderId, { payment: true }, { new: true });
-    await userModel.findByIdAndUpdate(userId, { cartData: {} });
-
-    const redirectUrl = `${frontend_url}/paymentSuccess?reference=${razorpay_payment_id}`;
-    console.log("Redirecting to:", redirectUrl);
-    
-    return res.status(302).redirect(redirectUrl);
-  } else {
-    res.status(404).json({ success: false });
+  else{
+    res.status(404).json({
+      success:false
+    })
   }
 };
-
 
 // user orders for frontend
 const userOrder=async(req,res)=>{
