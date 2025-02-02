@@ -37,7 +37,7 @@ export default function PlaceOrder() {
     const orderData = {
       address: data,
       items: orderItems,
-      amount: (cartTotal() + 2)*100, // Add delivery fee
+      amount: (cartTotal() + 2), // Add delivery fee
     };
     try {
       // Send Order to Backend
