@@ -21,7 +21,7 @@ const placeOrder = async (req, res)=>{
     const instance = new Razorpay({ key_id: process.env.RAZORPAY_API_KEY, key_secret:process.env.RAZORPAY_SECRET_KEY })
 
     const options = {
-      amount: Number(req.body.amount),  // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      amount: Number(req.body.amount)*100,  // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       currency: "INR",
       receipt: "order_rcptid_11",
       
