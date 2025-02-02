@@ -60,7 +60,7 @@ export default function PlaceOrder() {
         name: "TOMATO",
         description: "Test Transaction",
         order_id: order.id, // Order ID from backend
-        callback_url:`/api/order/verify?orderId=${orderId}&userId=${userId}`, // Redirect to verification URL after payment
+        callback_url:`${url}/api/order/verify?orderId=${orderId}&userId=${userId}`, // Redirect to verification URL after payment
         prefill: {
           name: data.name,
           email: data.email,
