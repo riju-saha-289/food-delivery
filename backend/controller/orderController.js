@@ -5,7 +5,7 @@ const Razorpay = require('razorpay');
 const crypto=require("crypto")
 
 //  
-const frontend_url="https://food-delivery-frontend-3zy7.onrender.com/"
+const frontend_url="https://food-delivery-frontend-3zy7.onrender.com"
 const placeOrder = async (req, res)=>{
   const {userId,items,amount,address}=req.body;
   try{
